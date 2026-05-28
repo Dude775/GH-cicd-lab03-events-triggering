@@ -4,13 +4,23 @@ name: CI
 # Right now the workflow runs on every push and every pull_request — no filtering.
 on:
   push:
-      branches:
-        - main
-        - develop
-      paths:
-        - 'src/**'
-        - 'tests/**'
+    branches:
+      - main
+      - develop
+    paths:
+      - 'src/**'
+      - 'tests/**'
   pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - 'src/**'
+      - 'tests/**'
+
 
 jobs:
   lint:
